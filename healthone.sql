@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 18 nov 2021 om 11:28
+-- Gegenereerd op: 06 dec 2021 om 12:56
 -- Serverversie: 10.4.21-MariaDB
 -- PHP-versie: 8.0.10
 
@@ -114,6 +114,20 @@ INSERT INTO `time` (`opening_time`, `day`, `id`, `closing_time`) VALUES
 ('08:00:00', 'Zaterdag', 6, '17:01:10'),
 ('08:00:00', 'Zondag', 7, '13:00:00');
 
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `email` int(11) NOT NULL,
+  `password` int(11) NOT NULL,
+  `first_name` int(11) NOT NULL,
+  `last_name` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexen voor geëxporteerde tabellen
 --
@@ -137,6 +151,12 @@ ALTER TABLE `time`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexen voor tabel `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
 
@@ -157,6 +177,12 @@ ALTER TABLE `products`
 --
 ALTER TABLE `time`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT voor een tabel `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
