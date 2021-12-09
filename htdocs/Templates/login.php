@@ -3,7 +3,6 @@ include_once('defaults/head.php');
 include_once ('defaults/header.php');
 include_once ('defaults/menu.php');
 include_once ('defaults/pictures.php');
-require '../Modules/Database.php';
 ?>
 
 <form method="post">

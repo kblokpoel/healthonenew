@@ -7,7 +7,6 @@ class User
     public $password;
     public $first_name;
     public $last_name;
-    public $role;
     public function __construct()
     {
         settype($this->id, 'integer');
