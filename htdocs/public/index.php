@@ -4,6 +4,8 @@ require '../Modules/Products.php';
 require '../Modules/Database.php';
 require '../Modules/Contact.php';
 require '../Modules/Users.php';
+session_start();
+
 
 $request = $_SERVER['REQUEST_URI'];
 $params = explode("/", $request);
@@ -54,11 +56,9 @@ switch ($params[1]) {
 
     case 'login':
         $titleSuffix = ' | Login';
-        if (isset($_POST['login'])) {
-           $result = checkLogin();
-
-
-            switch ($result) {
+        if(isset($_POST['login'])){
+            $result = checkLogin();
+            switch ($result){
                 case 'ADMIN':
                     header("location: /admin/home");
                     break;
@@ -72,15 +72,17 @@ switch ($params[1]) {
                     include_once "../Templates/login.php";
                     break;
             }
-        } else {
+        }
+        else {
             include_once "../Templates/login.php";
         }
         break;
-
+    case 'admin';
+        include_once ('admin.php');
+        break;
     default:
         $titleSuffix = ' | Home';
         include_once "../Templates/home.php";
-        break;
 }
 
 

@@ -2,9 +2,8 @@
 function addUser($name,$email,$password):bool
 {
     global $pdo;
-    $query = $pdo->prepare( "INSERT INTO user (name,password,email,image) VALUES (:name,:password,:email,:image)");
+    $query = $pdo->prepare( "INSERT INTO users (name,password,email) VALUES (:name,:password,:email,)");
     $query->bindParam(':name', $name);
-    $image ="nothing.jpeg";
     $query->bindParam(':password', $password);
     $query->bindParam(':email', $email);
     $query->bindParam(':image', $image);
@@ -16,11 +15,11 @@ function checkLogin():string{
     $email=filter_input(INPUT_POST,'email',FILTER_VALIDATE_EMAIL);
     $password=filter_input(INPUT_POST,'password');
     if ($email!== null && $email !== false && !empty($password)){
-        $sql = 'SELECT * FROM user WHERE email = :e AND password =:p';
+        $sql = 'SELECT * FROM User WHERE email = :e AND password =:p';
         $sth = $pdo->prepare($sql);
         $sth->bindParam(':e',$email);
         $sth->bindParam(':p',$password);
-        $sth->setFetchMode(PDO::FETCH_CLASS,'user');
+        $sth->setFetchMode(PDO::FETCH_CLASS,'User');
         $sth->execute();
         $user = $sth->fetch();
 
@@ -52,5 +51,5 @@ function isAdmin():bool {
 }
 function logout() {
     session_destroy();
-    var_dump("U bent uitgelogd") ;
+    echo"U bent uitgelogd";
 }

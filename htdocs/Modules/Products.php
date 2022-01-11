@@ -24,3 +24,28 @@ function getProduct(int $productId)
     }
     return $query->fetch();
 }
+
+function getAllProducts()
+{
+    global $pdo;
+    try {
+        $query = $pdo->prepare("SELECT * FROM products p join categories c ON (p.category_id = c.id)");
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_CLASS,"Product");
+    }
+    catch(PDOException $e){
+        $e->error_message;
+    }
+    return $result;
+}
+
+function deleteProduct(int $productId)
+{
+    global $pdo;
+    try {
+        $pdo->prepare("DELETE FROM products WHERE id=$productId;");
+    }
+    catch(PDOException $e){
+        $e->error_message;
+    }
+}
