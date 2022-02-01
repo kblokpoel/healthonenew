@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 09 dec 2021 om 15:18
+-- Gegenereerd op: 01 feb 2022 om 13:28
 -- Serverversie: 10.4.21-MariaDB
 -- PHP-versie: 8.0.10
 
@@ -125,15 +125,16 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `first_name` varchar(255) NOT NULL,
-  `last_name` varchar(255) NOT NULL
+  `last_name` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `password`, `first_name`, `last_name`) VALUES
-(1, 'nomail@email.com', 'software', 'Joe', 'Biden');
+INSERT INTO `user` (`id`, `email`, `password`, `first_name`, `last_name`, `image`) VALUES
+(1, 'nomail@email.com', 'software', 'Joe', 'Biden', 'https://img.ifunny.co/images/907396b7e291db67148ef224d16426baf79909345587b9f887a0c0d8a81c1d30_1.jpg');
 
 --
 -- Indexen voor geëxporteerde tabellen
