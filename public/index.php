@@ -3,6 +3,9 @@ require '../Modules/Categories.php';
 require '../Modules/Products.php';
 require '../Modules/Database.php';
 require '../Modules/Contact.php';
+require '../Modules/Users.php';
+session_start();
+
 
 $request = $_SERVER['REQUEST_URI'];
 $params = explode("/", $request);
@@ -53,33 +56,33 @@ switch ($params[1]) {
 
     case 'login':
         $titleSuffix = ' | Login';
-        if (isset($_POST['login'])) {
+        if(isset($_POST['login'])){
             $result = checkLogin();
-
-
-            switch ($result) {
+            switch ($result){
                 case 'ADMIN':
                     header("location: /admin/home");
                     break;
                 case 'MEMBER':
                 case 'FAILURE':
                     $message = "E-mail en/of wachtwoord niet correct ingevuld.";
-                    include_once "Templates/login.php";
+                    include_once "../Templates/login.php";
                     break;
                 case 'INCOMPLETE':
                     $message = "Check of u alle velden heeft ingevuld";
-                    include_once "Templates/login.php";
+                    include_once "../Templates/login.php";
                     break;
             }
-        } else {
+        }
+        else {
             include_once "../Templates/login.php";
         }
         break;
-
+    case 'admin';
+        include_once ('admin.php');
+        break;
     default:
         $titleSuffix = ' | Home';
         include_once "../Templates/home.php";
-        break;
 }
 
 
